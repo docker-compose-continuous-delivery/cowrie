@@ -9,7 +9,4 @@ services:
     ports:
       - "2222:2222"
     volumes:
-      - "./cowrie-log:/var/log/cowrie"
-      - "./cowrie-lib:/var/lib/cowrie"
-      - "./userdb.txt:/etc/userdb.txt"
-      - "./motd:/honeyfs/etc/motd"
+      - "./cowrie:/cowrie"
