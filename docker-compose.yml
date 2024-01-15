@@ -31,3 +31,7 @@ services:
       - "traefik.http.routers.winnrie.tls=true"
       - "traefik.http.routers.winnrie.service=winnrie"
       - "traefik.http.services.winnrie.loadbalancer.server.port=8080"
+
+networks:
+  traefik:
+    external: true
