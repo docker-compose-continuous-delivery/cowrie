@@ -14,3 +14,20 @@ services:
       - "./cowrie-lib/downloads:/cowrie/cowrie-git/var/lib/cowrie/downloads"
       - "./motd:/cowrie/cowrie-git/honeyfs/etc/motd"
       - "./userdb.txt:/cowrie/cowrie-git/etc/userdb.txt"
+
+  winnrie:
+    image: "ozeliurs/winnrie:latest"
+    container_name: "winnrie"
+    restart: unless-stopped
+    volumes:
+      - "./cowrie-log:/app/log"
+    networks:
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.winnrie.rule=Host(`winnrie.${BASE_DOMAIN}`)"
+      - "traefik.http.routers.winnrie.entrypoints=websecure"
+      - "traefik.http.routers.winnrie.tls.certresolver=cloudflare"
+      - "traefik.http.routers.winnrie.tls=true"
+      - "traefik.http.routers.winnrie.service=winnrie"
+      - "traefik.http.services.winnrie.loadbalancer.server.port=8080"
