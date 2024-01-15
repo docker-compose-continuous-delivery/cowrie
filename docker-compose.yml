@@ -21,6 +21,8 @@ services:
     restart: unless-stopped
     volumes:
       - "./cowrie-log:/app/logs"
+    env_file:
+      - .cowrie.env
     networks:
       - traefik
     labels:
