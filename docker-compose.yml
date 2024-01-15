@@ -19,9 +19,8 @@ services:
     image: "ozeliurs/winnrie:latest"
     container_name: "winnrie"
     restart: unless-stopped
-    user: "999:999"
     volumes:
-      - "./cowrie-log:/app/log"
+      - "./cowrie-log:/app/logs"
     networks:
       - traefik
     labels:
